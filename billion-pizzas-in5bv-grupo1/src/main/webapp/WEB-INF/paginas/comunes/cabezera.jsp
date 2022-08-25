@@ -11,15 +11,10 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/index.jsp">Inicio</a>
-                </li>
+             
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Menú</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
+                    <a class="nav-link " href="${pageContext.request.contextPath}/menus/menus.jsp">Menu</a>
+               
                 </li>
             </ul>
             <form class="d-flex" role="search">                                          
