@@ -22,26 +22,18 @@
     </head>
     <body>
         <!-- header encabezado -->
-        <header class="container-fluid bg-warning d-flex justify-content-center">
-            <p class="text-dark mb-0 p-1 fs-6">Bienvenidos</p>
-        </header>
+        
 
-        <jsp:include page="./WEB-INF/paginas/comunes/cabecera-login.jsp"/>
+        <!-- Menú -->
+        <jsp:include page="./WEB-INF/paginas/comunes/cabezera.jsp"/>
 
         <!-- Slider -->
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="./assets/images/slider1.jpg" class="d-block w-100" alt="Slider 1">
+                    <img src="./assets/images/pizzas6.webp" class="d-block w-100" alt="Slider 1">
                 </div>
-                
-                <div class="carousel-item">
-                    <img src="./assets/images/slider2.png" class="d-block w-100" alt="Slider 2">
-                </div>
-                
-                <div class="carousel-item">
-                    <img src="./assets/images/slider3.jpg" class="d-block w-100" alt="Slider 3">
-                </div>
+                               
             </div>
             
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -66,4 +58,3 @@
     </body>
 
 </html>
-
