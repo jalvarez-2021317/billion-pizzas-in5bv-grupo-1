@@ -16,5 +16,15 @@ body{
 }
 
 .carousel-inner {
-    max-height: 39rem;
+    max-height: 45rem;
 }
+
+#contenido{
+    margin: 40px;
+}
+
+.listado:hover{
+    background-color: orange;
+}
+
+
