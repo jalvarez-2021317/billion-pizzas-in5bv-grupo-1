@@ -35,7 +35,7 @@
                         <div class="row">
                             
                             <section id="accions" class="p-4">
-                                <div class="card bg-danger">
+                                <div class="card bg-dark text-center">
                                     <div class="card-header text-light">
                                         <h4>Especialidades</h4>
                                     </div>

@@ -18,7 +18,7 @@
                         Menú
                     </a>
                     <ul class="dropdown-menu bg-warning">
-                        <li><a class="dropdown-item"  href="${pageContext.request.contextPath}/menu/menu.jsp">Pizzas</a></li>
+                        <li><a class="dropdown-item"  href="${pageContext.request.contextPath}/menus/menu.jsp">Pizzas</a></li>
                         <li><a class="dropdown-item"  href="#">Bebidas</a></li>
                     </ul>
                 </li>
