@@ -11,8 +11,8 @@ import java.sql.Time;
 public class Orden {
 
     private int id_orden;
-    private Time hora_de_entrega;
-    private int id_cliente;
+    private Time hora_entrega;
+    private int cliente_id;
     private int menu_id;
     
     // contructor Nulo
@@ -26,24 +26,20 @@ public class Orden {
         this.id_orden = id_orden;
     }
 
-    public Orden(int id_orden, Time hora_de_entrega, int id_cliente, int menu_id) {
+    public Orden(int id_orden, Time hora_entrega, int cliente_id, int menu_id) {
         this.id_orden = id_orden;
-        this.hora_de_entrega = hora_de_entrega;
-        this.id_cliente = id_cliente;
+        this.hora_entrega = hora_entrega;
+        this.cliente_id = cliente_id;
         this.menu_id = menu_id;
     }
 
-    public Orden(Time hora_de_entrega, int id_cliente, int menu_id) {
-        this.hora_de_entrega = hora_de_entrega;
-        this.id_cliente = id_cliente;
+    public Orden(Time hora_entrega, int cliente_id, int menu_id) {
+        this.hora_entrega = hora_entrega;
+        this.cliente_id = cliente_id;
         this.menu_id = menu_id;
     }
 
-    
-
-    
-    
-    // geters And Seters
+   //Geters And Seters
 
     public int getId_orden() {
         return id_orden;
@@ -53,20 +49,20 @@ public class Orden {
         this.id_orden = id_orden;
     }
 
-    public Time getHora_de_entrega() {
-        return hora_de_entrega;
+    public Time getHora_entrega() {
+        return hora_entrega;
     }
 
-    public void setHora_de_entrega(Time hora_de_entrega) {
-        this.hora_de_entrega = hora_de_entrega;
+    public void setHora_entrega(Time hora_entrega) {
+        this.hora_entrega = hora_entrega;
     }
 
-    public int getId_cliente() {
-        return id_cliente;
+    public int getCliente_id() {
+        return cliente_id;
     }
 
-    public void setId_cliente(int id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setCliente_id(int cliente_id) {
+        this.cliente_id = cliente_id;
     }
 
     public int getMenu_id() {
@@ -77,11 +73,11 @@ public class Orden {
         this.menu_id = menu_id;
     }
     
-    // To String
+    // TO String
 
     @Override
     public String toString() {
-        return "Orden{" + "id_orden=" + id_orden + ", hora_de_entrega=" + hora_de_entrega + ", id_cliente=" + id_cliente + ", menu_id=" + menu_id + '}';
+        return "Orden{" + "id_orden=" + id_orden + ", hora_entrega=" + hora_entrega + ", cliente_id=" + cliente_id + ", menu_id=" + menu_id + '}';
     }
     
     

@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class EmpleadoDaoImpl implements IEmpleadoDao {
 
-    private static final String SQL_SELECT = "SELECT id_empleado,persona_id,tipo_empleado FROM empleados";
+    private static final String SQL_SELECT = "SELECT id_empleado,persona_id,tipo_empleado_id FROM empleados";
     private Connection con = null;
     private PreparedStatement pstmt = null;
     private ResultSet rs = null;
@@ -37,13 +37,13 @@ public class EmpleadoDaoImpl implements IEmpleadoDao {
                 empleado = new Empleado(
                         rs.getInt("id_empleado"),
                         rs.getInt("persona_id"),
-                        rs.getInt("tipo_empleado")
+                        rs.getInt("tipo_empleado_id")
                 );
                 listarEmpleado.add(empleado);
 
             }
         } catch (SQLException e) {
-            System.err.println("Se produjo un error al intentar listar los estudiantes");
+            System.err.println("Se produjo un error al intentar listar los Empleados");
             e.printStackTrace(System.out);
         } catch (Exception e) {
             e.printStackTrace(System.out);

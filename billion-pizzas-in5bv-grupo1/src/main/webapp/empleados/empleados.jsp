@@ -58,7 +58,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4> Listado de Empleados</h4>
+                                    <h4> <center>Listado de Empleados</center></h4>
                                 </div>
                             </div>
                             <table class="table table-dark table-striped">

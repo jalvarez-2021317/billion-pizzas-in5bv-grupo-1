@@ -36,14 +36,14 @@ public class OrdenDaoImpl implements IOrdenDao {
             while (rs.next()) {
                 orden = new Orden(
                         rs.getInt("id_orden"),
-                        rs.getTime("horden_entrega"),
+                        rs.getTime("hora_entrega"),
                         rs.getInt("cliente_id"),
                         rs.getInt("menu_id")
                        ); listaorden.add(orden);
 
             }
         } catch (SQLException e) {
-            System.err.println("Se produjo un error al intentar listar los estudiantes");
+            System.err.println("Se produjo un error al intentar listar las Ordenes");
             e.printStackTrace(System.out);
         } catch (Exception e) {
             e.printStackTrace(System.out);

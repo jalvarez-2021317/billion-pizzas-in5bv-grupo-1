@@ -50,7 +50,7 @@ public class ServletEmpleados extends HttpServlet {
         List<Empleado> data = new EmpleadoDaoImpl().getAll();
         HttpSession sesion = request.getSession();
         sesion.setAttribute("listarEmpleado", data);
-        response.sendRedirect("estudiantes/estudiantes.jsp");
+        response.sendRedirect("empleados/empleados.jsp");
 
     }
 
