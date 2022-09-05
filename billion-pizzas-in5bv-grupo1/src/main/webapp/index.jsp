@@ -25,7 +25,7 @@
         
 
         <!-- Menú -->
-        <jsp:include page="./WEB-INF/paginas/comunes/cabezera.jsp"/>
+        <jsp:include page="./WEB-INF/paginas/comunes/cabecera-login.jsp"/>
 
         <!-- Slider -->
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
