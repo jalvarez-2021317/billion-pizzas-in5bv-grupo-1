@@ -55,7 +55,8 @@ CREATE TABLE IF NOT EXISTS empleados(
 	tipo_empleado_id INT NOT NULL,
     
     PRIMARY KEY(id_empleado),
-    CONSTRAINT fk_empleados_id FOREIGN KEY (tipo_empleado_id) REFERENCES tipos_empleados(id)
+    CONSTRAINT fk_empleados_id FOREIGN KEY (tipo_empleado_id) REFERENCES tipos_empleados(id),
+    CONSTRAINT fk_persona_id FOREIGN KEY (persona_id) REFERENCES personas(dpi_cui)
 );
 
 DROP TABLE IF EXISTS usuarios;
@@ -123,7 +124,7 @@ CREATE TABLE IF NOT EXISTS factura(
     nombre VARCHAR(55),
     direccion VARCHAR(55),
     nit VARCHAR(55),
-    total INT NOT NULL,
+    total DOUBLE NOT NULL,
     cliente_id INT NOT NULL,
     orden_id INT NOT NULL,
     
