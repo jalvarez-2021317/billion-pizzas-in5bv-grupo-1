@@ -13,40 +13,45 @@
                     <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/index.jsp">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="${pageContext.request.contextPath}/ServletMenu?accion=listar">Menú</a>
+                    <a class="nav-link " href="${pageContext.request.contextPath}/menu/menu.jsp">Menú</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="${pageContext.request.contextPath}/ServletBebida?accion=listar">Bebidas</a>
+                    <a class="nav-link " href="${pageContext.request.contextPath}/bebidas/bebidas.jsp">Bebidas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="${pageContext.request.contextPath}/clientes/clientes.jsp">Clientes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="${pageContext.request.contextPath}/comidas/comidas.jsp">Comidas</a>
+                    <a class="nav-link " href="${pageContext.request.contextPath}/ServletComidas?accion=listar">Comidas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="${pageContext.request.contextPath}/ServletEmpleados?accion=listar">Empleados</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="${pageContext.request.contextPath}/facturas/facturas.jsp">Factura</a>
-                </li>              
+                    <a class="nav-link " href="${pageContext.request.contextPath}/ServletFacturas?accion=listar">Factura</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="${pageContext.request.contextPath}/menus/menus.jsp">Menu</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link " href="${pageContext.request.contextPath}/ServletOrdenes?accion=listar">Ordenes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="${pageContext.request.contextPath}/personas/personas.jsp">Personas</a>
+                    <a class="nav-link " href="${pageContext.request.contextPath}/ServletPersonas?accion=listar">Personas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="${pageContext.request.contextPath}/provedores/provedores.jsp">Provedores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="${pageContext.request.contextPath}/tipos-empleados/tipos-empleados.jsp">Cargo</a>
+                    <a class="nav-link " href="${pageContext.request.contextPath}/ServletTipo_empleados?accion=listar">Cargo</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="${pageContext.request.contextPath}/usuarios/usuarios.jsp">Usuarios</a>
                 </li>
             </ul>
-           
+            <form class="d-flex" role="search">                                          
+
+            </form>
         </div> 
     </div>
 </nav>
