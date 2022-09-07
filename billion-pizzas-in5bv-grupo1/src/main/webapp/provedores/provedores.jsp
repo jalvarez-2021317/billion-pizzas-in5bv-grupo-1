@@ -1,5 +1,5 @@
 <%-- 
-    Document   : proveedores
+    Document   : provedores
     Created on : 25/08/2022, 14:11:12
     Author     : informatica
 --%>
@@ -30,6 +30,7 @@
                 </div>
             </div>
         </header>
+    
 
 
         <jsp:include page="../WEB-INF/paginas/comunes/cabecera-login.jsp" />
@@ -74,7 +75,7 @@
                                 </thead>
                                 <tbody>
 
-                                    <c:forEach var="proveedores" items = "${listadoDeProveedores}">                                
+                                    <c:forEach var="proveedores" items = "${listarProvedores}">                                
                                         <tr>
                                             <td>${proveedores.id}</td>
                                             <td>${proveedores.nombre_empresa} </td>
@@ -106,5 +107,6 @@
         <script type="text/javascript" src="../assets/js/script.js"></script>
         <script type="text/javascript" src="https://unpkg.com/@popperjs/core@2"></script>
         <script type="text/javascript" src="../assets/js/bootstrap.bundle.js"></script>
+
     </body>
 </html>
