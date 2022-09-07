@@ -40,7 +40,7 @@
                     <a class="nav-link " href="${pageContext.request.contextPath}/ServletPersonas?accion=listar">Personas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="${pageContext.request.contextPath}/provedores/provedores.jsp">Provedores</a>
+                    <a class="nav-link " href="${pageContext.request.contextPath}/ServletProveedores?accion=listar">Provedores</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="${pageContext.request.contextPath}/ServletTipo_empleados?accion=listar">Cargo</a>
