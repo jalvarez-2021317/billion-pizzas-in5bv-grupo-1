@@ -68,7 +68,7 @@
                                         <th>Persona id</th>
                                         <th>Tipo de empleado id</th>
                                         <th>editar</th>
-                                        <th>eliminar</th>
+                                        <th>eliminár</th>
 
                                     </tr>
                                 </thead>
