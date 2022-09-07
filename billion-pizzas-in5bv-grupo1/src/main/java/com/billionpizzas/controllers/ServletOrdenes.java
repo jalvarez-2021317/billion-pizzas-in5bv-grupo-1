@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
 package com.billionpizzas.controllers;
 
@@ -55,7 +51,7 @@ public class ServletOrdenes extends HttpServlet {
         List<Orden> data = new OrdenDaoImpl().getAll();
         HttpSession sesion = request.getSession();
         sesion.setAttribute("listadoDeOrdenes", data);
-        response.sendRedirect("ordenes/ordenes.jsp");
+        response.sendRedirect(request.getContextPath()+"/"+"ordenes/ordenes.jsp");
 
     }
 
