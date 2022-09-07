@@ -13,10 +13,10 @@
                     <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/index.jsp">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="${pageContext.request.contextPath}/menu/menu.jsp">Menú</a>
+                    <a class="nav-link " href="${pageContext.request.contextPath}/ServletMenu?accion=listar">Menú</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="${pageContext.request.contextPath}/bebidas/bebidas.jsp">Bebidas</a>
+                    <a class="nav-link " href="${pageContext.request.contextPath}/ServletBebida?accion=listar">Bebidas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="${pageContext.request.contextPath}/clientes/clientes.jsp">Clientes</a>
@@ -29,10 +29,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="${pageContext.request.contextPath}/facturas/facturas.jsp">Factura</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="${pageContext.request.contextPath}/menus/menus.jsp">Menu</a>
-                </li>
+                </li>              
                 <li class="nav-item">
                     <a class="nav-link " href="${pageContext.request.contextPath}/ServletOrdenes?accion=listar">Ordenes</a>
                 </li>
@@ -49,9 +46,7 @@
                     <a class="nav-link " href="${pageContext.request.contextPath}/usuarios/usuarios.jsp">Usuarios</a>
                 </li>
             </ul>
-            <form class="d-flex" role="search">                                          
-
-            </form>
+           
         </div> 
     </div>
 </nav>

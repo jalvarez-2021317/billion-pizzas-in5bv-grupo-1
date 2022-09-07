@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <header class="bg-warning">
     <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap navbar navbar-expand-lg bg-warning p-2" id="menu"> 
         <div class="container-fluid">
