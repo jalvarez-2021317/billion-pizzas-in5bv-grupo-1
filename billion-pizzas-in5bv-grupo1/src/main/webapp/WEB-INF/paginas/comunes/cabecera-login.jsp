@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             <span class="text-warning fs-5 fw-bolder">Billion</span> 
-            <span class="fs-5 fw-bolder">Pizza´s</span>
+            <span class="fs-5 fw-bolder">Pizzaï¿½s</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -13,7 +13,7 @@
                     <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/index.jsp">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="${pageContext.request.contextPath}/ServletMenu?accion=listar">Menú</a>
+                    <a class="nav-link " href="${pageContext.request.contextPath}/ServletMenu?accion=listar">Menï¿½</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="${pageContext.request.contextPath}/ServletBebida?accion=listar">Bebidas</a>
@@ -37,7 +37,7 @@
                     <a class="nav-link " href="${pageContext.request.contextPath}/personas/personas.jsp">Personas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="${pageContext.request.contextPath}/provedores/provedores.jsp">Provedores</a>
+                    <a class="nav-link " href="${pageContext.request.contextPath}/ServletProveedores?accion=listar">Proveedores</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="${pageContext.request.contextPath}/tipos-empleados/tipos-empleados.jsp">Cargo</a>
