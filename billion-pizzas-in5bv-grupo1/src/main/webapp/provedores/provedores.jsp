@@ -74,7 +74,7 @@
                                 </thead>
                                 <tbody>
 
-                                    <c:forEach var="orden" items = "${listadoDeProveedores}">                                
+                                    <c:forEach var="proveedores" items = "${listadoDeProveedores}">                                
                                         <tr>
                                             <td>${proveedores.id}</td>
                                             <td>${proveedores.nombre_empresa} </td>

@@ -32,7 +32,7 @@ public class ServletProveedores extends HttpServlet {
         if (accion != null) {
             switch (accion) {
                 case "listar":
-                    listarOrdenes(request, response);
+                    listadoDeProveedores(request, response);
                     break;
                 case "editar":
 
@@ -46,11 +46,11 @@ public class ServletProveedores extends HttpServlet {
 
     }
 
-    private void listarOrdenes(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void listadoDeProveedores(HttpServletRequest request, HttpServletResponse response) throws IOException {
         List<Proveedores> data = new ProveedoresDaoImpl().getAll();
         HttpSession sesion = request.getSession();
         sesion.setAttribute("listadoDeProveedores", data);
-        response.sendRedirect("proveedores/proveedores.jsp");
+        response.sendRedirect("provedores/provedores.jsp");
 
     }
 
