@@ -19,7 +19,7 @@
                     <a class="nav-link " href="${pageContext.request.contextPath}/bebidas/bebidas.jsp">Bebidas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="${pageContext.request.contextPath}/clientes/clientes.jsp">Clientes</a>
+                    <a class="nav-link " href="${pageContext.request.contextPath}/ServletClientes?accion=listar">Clientes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="${pageContext.request.contextPath}/ServletComidas?accion=listar">Comidas</a>
@@ -46,7 +46,7 @@
                     <a class="nav-link " href="${pageContext.request.contextPath}/ServletTipo_empleados?accion=listar">Cargo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="${pageContext.request.contextPath}/usuarios/usuarios.jsp">Usuarios</a>
+                    <a class="nav-link " href="${pageContext.request.contextPath}/ServletUsuarios?accion=listar">Usuarios</a>
                 </li>
             </ul>
             <form class="d-flex" role="search">                                          
