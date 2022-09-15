@@ -9,11 +9,13 @@ import java.util.List;
 public interface ITipo_empleadoDao {
     //Listar registros
     public List<Tipo_empleado> getAll();
+    //Buscar o encontrar un registro en especifico 
+    public Tipo_empleado get(Tipo_empleado tipo_empleado);
     //Agregar nuevos registros 
-    public boolean add(Tipo_empleado tipo_empleado);
+    public int add(Tipo_empleado tipo_empleado);
     //Modificar registros 
-    public boolean update(Tipo_empleado tipo_empleado); 
+    public int update(Tipo_empleado tipo_empleado); 
     //Eliminar registros 
-    public boolean delete(Tipo_empleado tipo_empleado);
+    public int delete(Tipo_empleado tipo_empleado);
     
 }

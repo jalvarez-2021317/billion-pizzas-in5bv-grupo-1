@@ -54,7 +54,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Registro de facturas</h4>
+                                    <center><h4>Registro de facturas</h4></center>
                                 </div>
                             </div>
                             <table class="table table-striped">
@@ -89,7 +89,9 @@
                                                 <i class="fa-solid fa-user-pen"></i>
                                             </td>
                                             <td>
-                                                <i class="fa-solid fa-user-xmark"></i>
+                                                <a class="btn btn-secondary" href="${pageContext.request.contextPath}/ServletFacturas?accion=eliminar&noFactura=${factura.noFactura}">
+                                                    <i class="fa-solid fa-user-xmark"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     </c:forEach>

@@ -9,20 +9,52 @@ package com.billionpizzas.models.domain;
  * Codigo Tecnico: IN5BV
  *
  */
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "personas")
+@NamedQueries({
+    @NamedQuery(name = "Persona.findAll", query ="from Persona"),
+    @NamedQuery(name = "Persona.find", query ="from Persona WHERE id = :dpi")
+})
 public class Persona {
-
+    
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Column(name = "dpi_cui")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int dpi;
+    @Column
     private String nombre1;
+    @Column
     private String nombre2;
+    @Column
     private String nombre3;
+    @Column
     private String apellido1;
+    @Column
     private String apellido2;
+    @Column
     private String telefono;
+    @Column
     private String correo;
+    @Column
     private String direccion;
-
+    
     public Persona() {
 
+    }
+    
+    public Persona(int dpi){
+        this.dpi = dpi;
     }
 
     public Persona(String nombre1, String nombre2, String nombre3, String apellido1, String apellido2, String telefono, String correo, String direccion) {

@@ -22,11 +22,12 @@ public class ServletEmpleados extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse responce) throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String accion = request.getParameter("accion");
 
         if (accion != null) {
@@ -38,12 +39,20 @@ public class ServletEmpleados extends HttpServlet {
 
                     break;
                 case "eliminar":
-
+                    eliminarEmpleado(request, response);
                     break;
             }
 
         }
 
+    }
+
+    private void eliminarEmpleado(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        int idEmpleado = Integer.parseInt(request.getParameter("id_empelado"));
+        Empleado empleado = new EmpleadoDaoImpl().get(new Empleado(idEmpleado));
+        int registroEmpleado = new EmpleadoDaoImpl().delete(empleado);
+        listarEmpleado(request, response);
     }
 
     private void listarEmpleado(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -55,4 +64,3 @@ public class ServletEmpleados extends HttpServlet {
     }
 
 }
-

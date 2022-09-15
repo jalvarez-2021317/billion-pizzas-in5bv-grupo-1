@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 package com.billionpizzas.controllers;
 
 /**
@@ -27,11 +22,12 @@ public class ServletOrdenes extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse responce) throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String accion = request.getParameter("accion");
 
         if (accion != null) {
@@ -43,14 +39,23 @@ public class ServletOrdenes extends HttpServlet {
 
                     break;
                 case "eliminar":
-
+                    eliminarOrden(request, response);
                     break;
             }
 
         }
 
     }
+    
+    
+     private void eliminarOrden(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+        int idORden = Integer.parseInt(request.getParameter("id_orden"));
+        Orden orden = new OrdenDaoImpl().get(new Orden(idORden));
+        int registroOrden = new OrdenDaoImpl().delete(orden);
+        listarOrdenes(request, response);
+    }
+     
     private void listarOrdenes(HttpServletRequest request, HttpServletResponse response) throws IOException {
         List<Orden> data = new OrdenDaoImpl().getAll();
         HttpSession sesion = request.getSession();
@@ -58,6 +63,7 @@ public class ServletOrdenes extends HttpServlet {
         response.sendRedirect("ordenes/ordenes.jsp");
 
     }
+    
 
     
 }

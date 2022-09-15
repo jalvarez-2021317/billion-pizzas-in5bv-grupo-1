@@ -14,12 +14,15 @@ public interface IFacturaDao {
     // Listar todos los registros
     public List<Factura> getAll();
     
+    // Buscar o encontrar un registro en específico
+    public Factura get(Factura estudiante);
+    
     //Agregar un nuevo registro
-    public boolean add(Factura factura);
+    public int add(Factura factura);
     
     //Modificar un registro
-    public boolean update(Factura factura);
+    public int update(Factura factura);
     
     //Eliminar un registro
-    public boolean delete(Factura factura);
+    public int delete(Factura factura);
 }

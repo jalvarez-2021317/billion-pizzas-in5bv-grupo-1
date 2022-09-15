@@ -11,6 +11,8 @@ public interface IEmpleadoDao {
     //Listar registros
     public List<Empleado> getAll();
     
+    public Empleado get(Empleado empleado);
+    
     
     // Agregar un nuevo Registro
     public boolean add(Empleado empleado);
@@ -20,5 +22,5 @@ public interface IEmpleadoDao {
     
     // Eliminar un registro
     
-    public boolean delete(Empleado empleado);
+    public int delete(Empleado empleado);
 }

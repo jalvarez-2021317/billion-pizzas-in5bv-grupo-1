@@ -11,6 +11,8 @@ public interface IOrdenDao {
     //Listar registros
     public List<Orden> getAll();
     
+     public Orden get(Orden Orden);
+    
     
     // Agregar un nuevo Registro
     public boolean add(Orden orden);
@@ -20,5 +22,5 @@ public interface IOrdenDao {
     
     // Eliminar un registro
     
-    public boolean delete(Orden orden);
+    public int delete(Orden orden);
 }

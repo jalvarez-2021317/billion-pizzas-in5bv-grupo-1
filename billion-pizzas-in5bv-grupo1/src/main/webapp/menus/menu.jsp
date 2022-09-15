@@ -6,135 +6,132 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib  uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<fmt:setLocale value="es_GT" />
 
 <!DOCTYPE html>
 <html lang="es">
 
+    <!-- Cabeza de la página-->
     <head>
-        <title>Billion Pizza´s Menú</title>
-        <meta charset="utf-8"/>
+        <title> Menu</title>
+        <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- Importaciones CSS y Javascript(necesarios) -->
-        <link rel="stylesheet" type="text/css" href="../assets/css/estilos-billon-pizzas.css"/>
-        <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css"/>
-
+        <link rel="stylesheet" type="text/css" href="../assets/css/estilos-billon-pizzas.css" />
+        <link rel="stylesheet" type="text/css" href="../assets/css/flexslider.css" />
+        <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+        <script src="../assets/js/b0a86746f8.js"></script>
     </head>
+    <!-- Cuerpo de la página-->
+
+
+
     <body>
-        <!-- header encabezado -->
+        <header>
+            <!-- Encabezado de la página-->
+            <div class="container">
+                <div class="row">
+                </div>
+            </div>
+        </header>
 
-        <!-- Menú -->
-        <jsp:include page="../WEB-INF/paginas/comunes/cabezera.jsp"/>
 
+        <jsp:include page="../WEB-INF/paginas/comunes/cabecera-login.jsp" />
+        <aside>
+            <!-- Información secundaria-->
+        </aside>
+        
         <main>
             <!-- Contenido principal -->
-            <section>
-                <article id="contenido">  
-                    
-                    <div class="container">                      
-                        <div class="row">
-                            
-                            <section id="accions" class="p-4">
-                                <div class="card bg-dark text-center">
-                                    <div class="card-header text-light">
-                                        <h4>Especialidades</h4>
-                                    </div>
-                                </div>
-                             </section>
-                                
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="card" style="width: 18rem;">
-                                            <img src="../assets/images/pizza-pepperoni.webp" class="card-img-top pt-2" alt="...">
-                                            <div class="card-body">
-                                              <h5 class="card-title">Pizza de Pepperoni</h5>
-                                              <p class="card-text">
-                                                  Delicioso pan de trigo bañado en salsa,
-                                                  queso mosarela y delicioso pepperoni.
-                                              </p>
-                                              <h6>Tamaño: Grande, Mediano</h6>
-                                              <a href="https://www.dominos.com.gt/es/pages/order/menu#!/menu/category/entrees/" class="btn btn-danger">PIDE YA</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="card" style="width: 18rem;">
-                                            <img src="../assets/images/pizza-estaciones.png" class="card-img-top pt-2" alt="...">
-                                            <div class="card-body">
-                                              <h5 class="card-title">Pizza 4 Estaciones</h5>
-                                              <p class="card-text">
-                                                  Delicioso pan de trigo bañado en salsa,
-                                                  queso mosarela, jamon con piña, carne y peperoni
-                                              </p>
-                                              <h6>Tamaño: Grande, Mediano</h6>
-                                              <a href="https://www.dominos.com.gt/es/pages/order/menu#!/menu/category/entrees/" class="btn btn-danger">PIDE YA</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="card" style="width: 18rem;">
-                                            <img src="../assets/images/pizza-hawaiana.jpg" class="card-img-top pt-2" alt="...">
-                                            <div class="card-body">
-                                              <h5 class="card-title">Pizza Hawaiana</h5>
-                                              <p class="card-text">
-                                                  Delicioso pan de trigo bañado en salsa,
-                                                  queso mosarela y jamon con piña.
-                                              </p>
-                                              <h6>Tamaño: Grande, Mediano</h6>
-                                              <a href="https://www.dominos.com.gt/es/pages/order/menu#!/menu/category/entrees/" class="btn btn-danger">PIDE YA</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="card" style="width: 18rem;">
-                                            <img src="../assets/images/pizza-bbq.jpg" class="card-img-top pt-2" alt="...">
-                                            <div class="card-body">
-                                              <h5 class="card-title">Pizza Barbacoa</h5>
-                                              <p class="card-text">
-                                                  Delicioso pan de trigo bañado en salsa,
-                                                  queso mosarela, salsa BBQ y dos tipos de carne.
-                                              </p>
-                                              <h6>Tamaño: Grande, Mediano</h6>
-                                              <a href="https://www.dominos.com.gt/es/pages/order/menu#!/menu/category/entrees/" class="btn btn-danger">PIDE YA</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
+            <section id="accions" class="p-2">
+                <div class="container">                    
+                    <div class="row">
+                        <div class="col-12">
+                            <a class="btn btn-warning" href="#">Agregar Menu</a>
                         </div>
                     </div>
-
-                </article> 
+                </div>
             </section>
+
+            <section id="estudiante">
+                <div class="container mb-5 pb-5">
+                    <div class="row">
+                        
+                        <div class=" col-12 col-md-9">
+
+                            <section id="accions" class="p-3">
+                                <div class="card">
+                                    <div class="card-header text-center">
+                                        <h4>Listado de Menus</h4>
+                                    </div>
+                                </div>
+                            </section>                           
+
+                            <table class="table table-striped table-warning">
+                                <thead class="table-dark"> <!-- Encabezodo de la table thead -->
+                                    <tr>
+                                        <th>Id Menu</th>
+                                        <th>Horario Comida</th>
+                                        <th>Horario Apertura</th>
+                                        <th>Horario Cierre</th>
+                                        <th>Comidas Id</th>
+                                        <th>Bebidas Id</th>
+                                        <th>Editar</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <c:forEach var="menu" items="${listadoDeMenu}">
+                                        <tr>
+                                            <th scope="row">${menu.id_menu}</th>
+                                            <td>${menu.horario_comida}</td>
+                                            <td>${menu.horario_apertura}</td>
+                                            <td>${menu.horario_cierre}</td>
+                                            <td>${menu.comidas_id}</td>
+                                            <td>${menu.bebidas_id}</td>                                            
+                                            <td>
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                                Editar
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-secondary" href="${pageContext.request.contextPath}/ServletMenu?accion=eliminar&idMenu=${menu.id_menu}">    
+                                                    <!-- //accion y despues lo que realizara Eliminar, para un segunda parametro es con "&" -->
+                                                    <i class="fa-solid fa-trash-arrow-up"></i> Eliminar
+                                                </a>                                                
+                                            </td>
+                                        </tr> 
+                                    </c:forEach>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="col-12 col-md-3">
+                            <div class="card text-center bg-success text-white mb-3">
+                                <div class="card-body">
+                                    <h3>Total Menús</h3>
+                                    <h4 class="display-6">
+                                        ${totalMenus}
+                                    </h4>
+                                </div>                                
+                            </div>                                                    
+                        </div>
+                                                
+                    </div>
+                </div>
+            </section>
+
         </main>
 
 
-
-
-        <!-- Importaciones Javascript -->
         <script type="text/javascript" src="../assets/js/jquery-3.6.0.js"></script>
         <script type="text/javascript" src="../assets/js/jquery-migrate-3.4.0.js"></script>
         <script type="text/javascript" src="../assets/js/jquery-migrate-1.4.1.js"></script>
+        <script type="text/javascript" src="../assets/js/jquery.flexslider.js"></script>
         <script type="text/javascript" src="../assets/js/script.js"></script>
-        <script type="text/javascript" src="../assets/js/bootstrap.bundle.js"></script>    
-
+        <script type="text/javascript" src="https://unpkg.com/@popperjs/core@2"></script>
+        <script type="text/javascript" src="../assets/js/bootstrap.bundle.js"></script>
     </body>
-
 </html>

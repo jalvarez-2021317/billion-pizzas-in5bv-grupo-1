@@ -1,15 +1,38 @@
 package com.billionpizzas.models.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import java.io.Serializable;
+import java.sql.Date;
+
 /**
  *
  * @author Joshua David Alvarez Calderon
  * @date 4 sep. 2022
  * @time 15:53:25
  */
-public class Empleado {
 
+@Entity
+@Table(name = "empleado")
+@NamedQueries({
+    @NamedQuery(name = "Empleado.findAll", query ="from Empleado"),
+    @NamedQuery(name = "Empleado.find", query ="from Empleado WHERE id = :id_empleado")
+})
+public class Empleado {
+    
+    @Id
+    @Column(name = "id_empleado")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_empleado;
+    @Column
     private int persona_id;
+    @Column
     private int tipo_empleado_id;
     
     // Contructor nulo

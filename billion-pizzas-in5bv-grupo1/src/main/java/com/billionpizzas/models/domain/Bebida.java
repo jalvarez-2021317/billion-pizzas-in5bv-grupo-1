@@ -1,6 +1,16 @@
 package com.billionpizzas.models.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 import java.sql.Date;
+import java.io.Serializable;
 
 /**
  *
@@ -9,11 +19,30 @@ import java.sql.Date;
  * @time 18:02:19
  */
 
-public class Bebida {
+@Entity
+@Table(name = "bebidas")
+@NamedQueries({
+    @NamedQuery(name = "Bebida.findAll", query ="from Bebida"),
+    @NamedQuery(name = "Bebida.find", query = "from Bebida WHERE id = :id")
+    //from Bebida hace referencia a la clase Bebida, no ha la tabla de la base de datos, consulta entre objetos.
+})
+
+public class Bebida implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
+    
+    @Id
+    @Column(name = "id_bebidas")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_bebidas;
+    
+    @Column
     private String nombre_bebidas;
+    @Column
     private Date fecha_caducida;
+    @Column
     private int precio;
+    @Column
     private int proveedor_id;
     
     //Constructor nulo

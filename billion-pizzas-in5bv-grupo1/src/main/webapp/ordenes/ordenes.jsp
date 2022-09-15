@@ -87,7 +87,9 @@
                                                 <i class="fa-solid fa-user-pen"></i>
                                             </td>
                                             <td>
-                                                <i class="fa-solid fa-user-xmark"></i>
+                                                <a class="btn btn-secondary" href="${pageContext.request.contextPath}/ServletOrdenes?accion=eliminar&id_orden=${orden.id_orden}">
+                                                    <i class="fa-solid fa-user-xmark"></i>
+                                                </a>
                                             </td>
                                         </tr>
 

@@ -11,11 +11,13 @@ import java.util.List;
 public interface IComidaDao {
     //Listar registros
     public List<Comida> getAll();
+    //Buscar o encontrar un registro en especifico 
+    public Comida get(Comida comida);
     //Agregar nuevos registros 
-    public boolean add(Comida comida);
+    public int add(Comida comida);
     //Modificar registros 
-    public boolean update(Comida comida); 
+    public int update(Comida comida); 
     //Eliminar registros 
-    public boolean delete(Comida comida);
+    public int delete(Comida comida);
     
 }

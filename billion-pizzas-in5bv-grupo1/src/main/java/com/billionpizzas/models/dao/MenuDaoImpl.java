@@ -21,6 +21,7 @@ import java.util.List;
 public class MenuDaoImpl implements IMenuDao {
     
     private static final String SQL_SELECT = "SELECT id_menu, horario_comida, horario_apertura, horario_cierre, comidas_id, bebidas_id FROM menu";
+    private static final String SQL_DELETE = "DELETE FROM menu WHERE id_menu = ?"; //Se envia ? para indicar el parametro
     private Connection con = null;
     private PreparedStatement pstmt = null;
     private ResultSet rs = null;
@@ -58,18 +59,38 @@ public class MenuDaoImpl implements IMenuDao {
     }
 
     @Override
-    public boolean add(Menu menu) {
-        return false;
+    public int add(Menu menu) {
+        return 0;
     }
 
     @Override
-    public boolean update(Menu menu) {
-        return false;
+    public int update(Menu menu) {
+        return 0;
     }
 
     @Override
-    public boolean delete(Menu menu) {
-        return false;
+    public int delete(Menu menu) {
+        int rows = 0;        
+        try {
+            con = Conexion.getConnection();
+            pstmt = con.prepareCall(SQL_DELETE);
+            pstmt.setInt(1, menu.getId_menu());
+            System.out.println(pstmt.toString());
+            
+            rows = pstmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.err.println("Se produjo un error al intentar eliminar el registro con el id: " + menu.getId_menu());
+            e.printStackTrace(System.out);
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return rows;
+    }
+
+    @Override
+    public Menu get(Menu menu) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

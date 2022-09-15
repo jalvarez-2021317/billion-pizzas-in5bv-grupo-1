@@ -1,5 +1,15 @@
 package com.billionpizzas.models.domain;
 
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import java.io.Serializable;
 import java.sql.Time;
 
 /**
@@ -8,11 +18,23 @@ import java.sql.Time;
  * @date 4 sep. 2022
  * @time 15:53:33
  */
+@Entity
+@Table(name = "orden")
+@NamedQueries({
+    @NamedQuery(name = "Orden.findAll", query ="from orden"),
+    @NamedQuery(name = "Orden.find", query ="from orden WHERE id = :id_orden")
+})
 public class Orden {
 
+    @Id
+    @Column(name = "id_orden")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_orden;
+    @Column
     private Time hora_entrega;
+    @Column
     private int cliente_id;
+    @Column
     private int menu_id;
     
     // contructor Nulo

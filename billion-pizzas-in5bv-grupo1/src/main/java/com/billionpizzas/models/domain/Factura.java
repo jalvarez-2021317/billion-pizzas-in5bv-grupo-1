@@ -1,5 +1,14 @@
 package com.billionpizzas.models.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
@@ -11,15 +20,36 @@ import java.sql.Date;
  * Codigo Tecnico: IN5BV
  *
  */
+
+@Entity
+@Table(name = "factura")
+@NamedQueries({
+    @NamedQuery(name = "Factura.findAll", query ="from Factura"),
+    @NamedQuery(name = "Factura.find", query ="from Factura WHERE id = :noFactura")
+})
 public class Factura {
+    
+    private static final long serialVersionUID = 1L;
+    
+    @Id
+    @Column(name = "no_factura")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int noFactura;
+    @Column
     private String serie;
+    @Column
     private Date fecha;
+    @Column
     private String nombre;
+    @Column
     private String direccion;
+    @Column
     private String nit;
+    @Column
     private double total;
+    @Column(name = "cliente_id")
     private int clienteId;
+    @Column(name = "orden_id")
     private int ordenId;
     
     public Factura(){

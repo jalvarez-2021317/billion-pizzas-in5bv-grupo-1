@@ -15,7 +15,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.ServletException;
 
 import com.billionpizzas.models.domain.Bebida;
-import com.billionpizzas.models.dao.BebidaDaoImpl;
+
+import com.billionpizzas.models.dao.BebidaDaoJPA;
 
 import java.util.List;
 import java.io.IOException;
@@ -42,7 +43,7 @@ public class ServletBebida extends HttpServlet {
                     //..
                     break;
                 case "eliminar":
-                    //..
+                    eliminarBebida(request, response);
                     break;
             }
 
@@ -51,11 +52,25 @@ public class ServletBebida extends HttpServlet {
     }
     
     private void listarBebida(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        List<Bebida> data = new BebidaDaoImpl().getAll();
+        //List<Bebida> data = new BebidaDaoImpl().getAll();
+        List<Bebida> data = new BebidaDaoJPA().getAll();
         HttpSession sesion = request.getSession();
         sesion.setAttribute("listadoBebida", data);
+        sesion.setAttribute("totalBebidas", data.size());
         response.sendRedirect("bebidas/bebidas.jsp");
-
+    }
+    
+    private void eliminarBebida(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        //getParameter da String asi que hay que hacer converción a Int
+        int idBebida = Integer.parseInt(request.getParameter("idBebida"));
+        
+        //Bebida bebida = new Bebida(idBebida);
+        Bebida bebida = new BebidaDaoJPA().get(new Bebida(idBebida));
+        
+        //int registrosEliminados = new BebidaDaoImpl().delete(bebida);
+        int registrosEliminados = new BebidaDaoJPA().delete(bebida);
+        
+        listarBebida(request, response);//Para mostrar de nuevo los resgitros.
     }
 
 }

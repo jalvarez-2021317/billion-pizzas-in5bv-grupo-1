@@ -40,7 +40,7 @@
             <section id="estudiante">
                 <div class="container mb-5 pb-5">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 col-md-9">
                             <div class="card">
                                 <div class="card-header">
                                     <center><h4>Listado de disponibilidad de comida</h4></center>
@@ -65,13 +65,33 @@
                                         <td>${comida.nombre_comida}</td>
                                         <td>${comida.precio}</td>
                                         <td><i class="far fa-edit"></i> Editar</td>
-                                        <td><i class="far fa-trash-alt"></i> Eliminar</td>
+                                        <td>
+                                            <a class="btn btn-secondary" href="{pageContext.request.contextPath}/ServletComidas?accion=eliminar&id_comidas=${comida.id_comidas}">
+                                                <i class="far fa-trash-alt"></i> Eliminar
+                                            </a>
+                                        </td>
                                     </tr>
                                 </c:forEach>
 
                             </tbody>
                         </table>
-                    </div>   
+                    </div>  
+                    <div class = "col-3 col-md-3">
+                            <div class="card text-center bg-warning text-white mb-3">
+                                <div class="card-body">
+                                    <h3>Precio de todo el menú</h3>
+                                    <h4>Q900.00</h4>
+                                </div>
+                                
+                            </div>
+                            <div class="card text-center bg-danger text-white mb-5">
+                                <div class="card-body">
+                                    <h3>Total de Opciones: </h3>
+                                    <h4>5</h4>
+                                </div>
+                                
+                            </div>
+                        </div>
                 </div>
             </section>
 

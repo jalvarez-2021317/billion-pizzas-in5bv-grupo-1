@@ -10,8 +10,19 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
-<html>
 
+    <!-- Cabeza de la página-->
+    <head>
+        <title> Billion Pizzas</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="../assets/css/estilos-billon-pizzas.css" />
+        <link rel="stylesheet" type="text/css" href="../assets/css/flexslider.css" />
+        <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+        <script src="../assets/js/b0a86746f8.js"></script>
+    </head>
+    <!-- Cuerpo de la página-->
+    <body>
         <header>
             <!-- Encabezado de la página-->
             <div class="container">
@@ -19,6 +30,7 @@
                 </div>
             </div>
         </header>
+    
 
 
         <jsp:include page="../WEB-INF/paginas/comunes/cabecera-login.jsp" />
@@ -63,7 +75,7 @@
                                 </thead>
                                 <tbody>
 
-                                    <c:forEach var="proveedores" items = "${listadoDeProveedores}">                                
+                                    <c:forEach var="proveedores" items = "${listarProvedores}">                                
                                         <tr>
                                             <td>${proveedores.id}</td>
                                             <td>${proveedores.nombre_empresa} </td>

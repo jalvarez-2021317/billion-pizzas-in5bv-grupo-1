@@ -82,12 +82,32 @@
                                             <td>${tipo_empleados.id}</td>
                                             <td>${tipo_empleados.puesto}</td>
                                             <td><i class="far fa-edit"></i>Editar</td>
-                                            <td><i class="far fa-trash-alt"></i>Eliminar</td>
+                                            <td>
+                                            <a class="btn btn-secondary" href="{pageContext.request.contextPath}/ServletTipo_empleados?accion=eliminar&id=${tipo_empleados.id}">
+                                                <i class="far fa-trash-alt"></i> Eliminar
+                                            </a>
+                                        </td>
                                         </tr>
                                     </c:forEach>
 
                                 </tbody>
                             </table>
+                        </div>
+                        <div class = "col-3">
+                            <div class="card text-center bg-warning text-white mb-3">
+                                <div class="card-body">
+                                    <h3>Saldo total</h3>
+                                    <h4>Q900.00</h4>
+                                </div>
+                                
+                            </div>
+                            <div class="card text-center bg-danger text-white mb-5">
+                                <div class="card-body">
+                                    <h3>Total de Estudiantes</h3>
+                                    <h4>5</h4>
+                                </div>
+                                
+                            </div>
                         </div>
 
                     </div>

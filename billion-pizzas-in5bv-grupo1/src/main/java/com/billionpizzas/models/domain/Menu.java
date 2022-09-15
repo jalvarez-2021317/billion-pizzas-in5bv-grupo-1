@@ -1,6 +1,16 @@
 package com.billionpizzas.models.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 import java.sql.Time;
+import java.io.Serializable;
 
 /**
  *
@@ -8,13 +18,34 @@ import java.sql.Time;
  * @date 6/09/2022
  * @time 17:40:12
  */
-public class Menu {
+
+@Entity
+@Table(name = "menu")
+@NamedQueries({
+    @NamedQuery(name = "Menu.findAll", query ="from Menu"),    
+    @NamedQuery(name = "Menu.find", query = "from Menu WHERE id = :id")
+    //from menu hace referencia a la clase Menu, no ha la tabla de la base de datos, consulta entre objetos.
+})
+
+public class Menu implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
+    
+    @Id
+    @Column(name = "id_menu")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_menu;
+    
+    @Column
     private Time horario_comida;
+    @Column
     private Time horario_apertura;
+    @Column
     private Time horario_cierre;
+    @Column
     private int comidas_id;
-    private int bebidas_id;
+    @Column
+    private int bebidas_id;   
     
     //Constructor nulo
     public Menu(){   

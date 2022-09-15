@@ -14,12 +14,15 @@ public interface IPersonaDao {
     // Listar todos los registros
     public List<Persona> getAll();
     
+    // Buscar o encontrar un registro en específico
+    public Persona get(Persona persona);
+    
     //Agregar un nuevo registro
-    public boolean add(Persona factura);
+    public int add(Persona persona);
     
     //Modificar un registro
-    public boolean update(Persona factura);
+    public int update(Persona persona);
     
     //Eliminar un registro
-    public boolean delete(Persona factura);
+    public int delete(Persona persona);
 }

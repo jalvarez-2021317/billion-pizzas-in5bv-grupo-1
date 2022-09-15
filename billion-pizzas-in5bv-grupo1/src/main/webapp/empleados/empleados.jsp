@@ -82,7 +82,9 @@
                                                <i class="fa-solid fa-user-pen"></i>
                                         </td>
                                     <td>
-                                        <i class="fa-solid fa-user-xmark"></i>
+                                        <a class="btn btn-secondary" href="${pageContext.request.contextPath}/ServletEmpleados?accion=eliminar&id_empelado=${empleado.id_empleado}">
+                                                    <i class="fa-solid fa-user-xmark"></i>
+                                                </a>
                                     </td>
                                     </tr>
                                     

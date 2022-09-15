@@ -48,13 +48,55 @@
                 </div>
             </section>
 
+            <!-- Modal-->
+            <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary text-white text-alignt-center">
+                            <h5 class="modal-title" id="exampleModalLabel">Agregar personas</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form method="POST" action="${pageContext.request.contextPath}/ServletEstudiante" class="was-validated">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="nombre" class="col-form-label">Nombres</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="apellido" class="col-form-label">Apellidos</label>
+                                    <input type="text" class="form-control" id="apellido" name="apellido" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="col-form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telefono" class="col-form-label">Teléfono</label>
+                                    <input type="tel" class="form-control" id="telefono" name="telefono" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="saldo" class="col-form-label">Saldo</label>
+                                    <input type="number" class="form-control" id="saldo" name="saldo" required step="any">
+                                </div>
+                                <input type="hidden" class="form-control" id="accion" name="accion" value="insertar">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+                            
+            <!-- Tabla con listado de estudiantes-->
             <section id="persona">
                 <div class="container mb-5 pb-5">
                     <div class="row">
                         <div class="col">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Registro de las personas</h4>
+                                    <center><h4>Registro de las personas</h4></center>
                                 </div>
                             </div>
                             <table class="table table-striped">
@@ -81,7 +123,9 @@
                                                 <i class="fa-solid fa-user-pen"></i>
                                             </td>
                                             <td>
-                                                <i class="fa-solid fa-user-xmark"></i>
+                                                <a class="btn btn-secondary" href="${pageContext.request.contextPath}/ServletPersonas?accion=eliminar&dpi=${persona.dpi}">
+                                                    <i class="fa-solid fa-user-xmark"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     </c:forEach>

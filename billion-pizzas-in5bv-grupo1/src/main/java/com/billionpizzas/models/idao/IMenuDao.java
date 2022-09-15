@@ -13,13 +13,16 @@ public interface IMenuDao {
     //Listar Registros
     public List<Menu> getAll();
     
+    //Buscar o encontrar un registro en específico
+    public Menu get(Menu menu);
+    
     //Agregar Registro
-    public boolean add(Menu menu);
+    public int add(Menu menu);
     
     //Modificar un Registro
-    public boolean update(Menu menu);
+    public int update(Menu menu);
     
     //Eliminar un Registro
-    public boolean delete(Menu menu);
+    public int delete(Menu menu);
     
 }

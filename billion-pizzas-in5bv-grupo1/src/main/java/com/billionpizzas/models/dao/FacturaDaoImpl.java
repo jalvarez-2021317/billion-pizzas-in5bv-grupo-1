@@ -22,6 +22,10 @@ import java.util.List;
 public class FacturaDaoImpl implements IFacturaDao {
 
     private static final String SQL_SELECT = "SELECT no_factura, serie, fecha, nombre, direccion, nit, total, cliente_id, orden_id FROM factura";
+    private static final String SQL_INSERT = "INSERT INTO factura(no_factura, serie, fecha, nombre, direccion, nit, total, cliente_id, orden_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String SQL_SELECT_BY_ID = "SELECT no_factura, serie, fecha, nombre, direccion, nit, total, cliente_id, orden_id FROM factura WHERE id = ?";
+    private static final String SQL_DELETE = "DELETE FROM factura WHERE id=?";
+    
     private Connection con = null;
     private PreparedStatement pstmt = null;
     private ResultSet rs = null;
@@ -55,17 +59,69 @@ public class FacturaDaoImpl implements IFacturaDao {
     }
 
     @Override
-    public boolean add(Factura factura) {
-        return false;
+    public int add(Factura factura) {
+        int rows = 0;
+        try {
+            con = Conexion.getConnection();
+            pstmt = con.prepareStatement(SQL_INSERT);
+            pstmt.setInt(1, factura.getNoFactura());
+            pstmt.setString(2, factura.getSerie());
+            pstmt.setDate(3, factura.getFecha());
+            pstmt.setString(4, factura.getNombre());
+            pstmt.setString(5, factura.getDireccion());
+            pstmt.setString(6, factura.getNit());
+            pstmt.setDouble(7, factura.getTotal());
+            pstmt.setInt(8, factura.getClienteId());
+            pstmt.setInt(9, factura.getOrdenId());
+            
+            System.out.println(pstmt.toString());
+            rows = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Se produjo un error al intentar insertar el registro: " + factura);
+            e.printStackTrace(System.out);
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }finally{
+            Conexion.close(pstmt);
+            Conexion.close(con);
+        }
+        return rows;
     }
 
     @Override
-    public boolean update(Factura factura) {
-        return false;
+    public int update(Factura factura) {
+        int rows = 0;
+        
+        return rows;
     }
 
     @Override
-    public boolean delete(Factura factura) {
-        return false;
+    public int delete(Factura factura) {
+        int rows = 0;
+        try {
+            con = Conexion.getConnection();
+            pstmt = con.prepareStatement(SQL_DELETE);
+            pstmt.setInt(1, factura.getNoFactura());
+
+            System.out.println(pstmt.toString());
+            rows= pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.err.println("Se produjo un error al intentar eliminar el registro con el id: " + factura.getNoFactura());
+            e.printStackTrace(System.out);
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }finally{
+            Conexion.close(pstmt);
+            Conexion.close(con);
+        }
+        return rows;
     }
+
+    @Override
+    public Factura get(Factura estudiante) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    
 }

@@ -1,4 +1,3 @@
-
 package com.billionpizzas.models.dao;
 
 import com.billionpizzas.db.Conexion;
@@ -19,24 +18,25 @@ import java.util.List;
 public class ComidaDaoImpl implements IComidaDao {
 
     private static final String SQL_SELECT = "SELECT id_comidas,nombre_comida,precio FROM comidas";
+    private static final String SQL_DELETE = "DELETE FROM comidas WHERE id_comidas = ?";
     private Connection con = null;
-    private PreparedStatement pstmt = null; 
+    private PreparedStatement pstmt = null;
     private ResultSet rs = null;
-    private Comida comida = null; 
-    private List<Comida> listaComida = new ArrayList<>();
-    
+    private Comida comida = null;
+    private List<Comida> listarComida = new ArrayList<>();
+
     @Override
     public List<Comida> getAll() {
-        try{
+        try {
             con = Conexion.getConnection();
             pstmt = con.prepareStatement(SQL_SELECT);
             rs = pstmt.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 comida = new Comida(rs.getInt("id_comidas"), rs.getString("nombre_comida"), rs.getInt("precio"));
-                listaComida.add(comida);
+                listarComida.add(comida);
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             System.err.println("Se produjo un error al intentar listar las comidas");
             e.printStackTrace(System.out);
         } catch (Exception e) {
@@ -45,43 +45,43 @@ public class ComidaDaoImpl implements IComidaDao {
             Conexion.close(rs);
             Conexion.close(pstmt);
             Conexion.close(con);
-        } 
-        return listaComida;
+        }
+        return listarComida;
     }
 
     @Override
-    public boolean add(Comida comida) {
-        return false; 
+    public int add(Comida comida) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public boolean update(Comida comida) {
-        return false;
+    public int update(Comida comida) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public boolean delete(Comida comida) {
-        return false; 
+    public int delete(Comida comida) {
+        int rows = 0;
+        try {
+            con = Conexion.getConnection();
+            pstmt = con.prepareStatement(SQL_DELETE);
+            pstmt.setInt(1, comida.getId_comidas());
+            System.out.println(pstmt.toString());
+
+            rows = pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.err.println("Se produjo un error al tratar de eliminar el registro con el id " + comida.getId_comidas());
+            e.printStackTrace(System.out);
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return rows; 
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    @Override
+    public Comida get(Comida comida) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

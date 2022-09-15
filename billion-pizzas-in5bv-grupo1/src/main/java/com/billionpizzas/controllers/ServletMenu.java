@@ -15,7 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.ServletException;
 
 import com.billionpizzas.models.domain.Menu;
-import com.billionpizzas.models.dao.MenuDaoImpl;
+import com.billionpizzas.models.dao.MenuDaoJPA;
 
 import java.util.List;
 import java.io.IOException;
@@ -42,7 +42,7 @@ public class ServletMenu extends HttpServlet {
                     //..
                     break;
                 case "eliminar":
-                    //..
+                    eliminarMenu(request, response);
                     break;
             }
 
@@ -50,10 +50,24 @@ public class ServletMenu extends HttpServlet {
     }
     
     private void listarMenu(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        List<Menu> data = new MenuDaoImpl().getAll();
+        //List<Menu> data = new MenuDaoImpl().getAll();
+        List<Menu> data = new MenuDaoJPA().getAll();
         HttpSession sesion = request.getSession();
         sesion.setAttribute("listadoDeMenu", data);
+        sesion.setAttribute("totalMenus", data.size());
         response.sendRedirect("menus/menu.jsp");
-
+    }
+    
+    private void eliminarMenu(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        //getParameter da String asi que hay que hacer converción a Int
+        int idMenu = Integer.parseInt(request.getParameter("idMenu")); 
+        
+        //Menu menu = new Menu(idMenu);
+        Menu menu = new MenuDaoJPA().get(new Menu(idMenu));
+        
+        //int registrosEliminados = new MenuDaoImpl().delete(menu);        
+        int registrosEliminados = new MenuDaoJPA().delete(menu);
+        
+        listarMenu(request, response); //Para mostrar de nuevo los resgitros.
     }
 }
