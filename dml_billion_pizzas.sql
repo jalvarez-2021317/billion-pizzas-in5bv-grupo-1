@@ -89,6 +89,7 @@ INSERT INTO usuarios(user, password, empleado_id) VALUES('Kevin Josue','Xulu Sol
 INSERT INTO usuarios(user, password, empleado_id) VALUES('Kevin Josue','Xulu Solis',);
 INSERT INTO usuarios(user, password, empleado_id) VALUES('Kevin Josue','Xulu Solis',);
 */
+INSERT INTO usuarios(user, password, empleado_id) VALUES('Kevin Josue','Xulu Solis',1);
 INSERT INTO clientes(nit, persona_id) VALUES('1234567845',152364879);
 INSERT INTO clientes(nit, persona_id) VALUES('8564352170',598756321);
 INSERT INTO clientes(nit, persona_id) VALUES('3005647821',789652314);
