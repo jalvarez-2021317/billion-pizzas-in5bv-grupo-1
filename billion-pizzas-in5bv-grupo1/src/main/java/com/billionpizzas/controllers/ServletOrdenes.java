@@ -1,0 +1,69 @@
+package com.billionpizzas.controllers;
+
+/**
+ *
+ * @author Joshua David Alvarez Calderon
+ * @date 4 sep. 2022
+ * @time 15:51:52
+ */
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.ServletException;
+import com.billionpizzas.models.domain.Orden;
+import com.billionpizzas.models.dao.OrdenDaoImpl;
+import java.util.List;
+import java.io.IOException;
+
+@WebServlet("/ServletOrdenes")
+public class ServletOrdenes extends HttpServlet {
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse responce) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        String accion = request.getParameter("accion");
+
+        if (accion != null) {
+            switch (accion) {
+                case "listar":
+                    listarOrdenes(request, response);
+                    break;
+                case "editar":
+
+                    break;
+                case "eliminar":
+                    eliminarOrden(request, response);
+                    break;
+            }
+
+        }
+
+    }
+    
+    
+     private void eliminarOrden(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        int idORden = Integer.parseInt(request.getParameter("id_orden"));
+        Orden orden = new OrdenDaoImpl().get(new Orden(idORden));
+        int registroOrden = new OrdenDaoImpl().delete(orden);
+        listarOrdenes(request, response);
+    }
+     
+    private void listarOrdenes(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        List<Orden> data = new OrdenDaoImpl().getAll();
+        HttpSession sesion = request.getSession();
+        sesion.setAttribute("listadoDeOrdenes", data);
+        response.sendRedirect("ordenes/ordenes.jsp");
+
+    }
+    
+
+    
+}
