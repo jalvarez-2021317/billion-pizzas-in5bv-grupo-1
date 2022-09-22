@@ -18,8 +18,8 @@ import java.io.Serializable;
 @Entity
 @Table(name = "tipos_empleados")
 @NamedQueries ({
-    @NamedQuery(name = "Tipo_empleado.findAll", query="from Tipo_empleado"),
-    @NamedQuery(name = "Tipo_empleado.find", query="from Tipo_empleado WHERE id = :id")
+    @NamedQuery(name = "Tipo_empleado.findAll", query = "from Tipo_empleado"),
+    @NamedQuery(name = "Tipo_empleado.find", query = "from Tipo_empleado WHERE id = :id")
 })
 public class Tipo_empleado implements Serializable{
 
@@ -61,6 +61,11 @@ public class Tipo_empleado implements Serializable{
     public void setPuesto(String puesto) {
         this.puesto = puesto;
     }
+
+    public Tipo_empleado(String puesto) {
+        this.puesto = puesto;
+    }
+
     
     
     

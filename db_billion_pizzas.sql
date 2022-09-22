@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS empleados(
 	tipo_empleado_id INT NOT NULL,
     
     PRIMARY KEY(id_empleado),
-    CONSTRAINT fk_empleados_id FOREIGN KEY (tipo_empleado_id) REFERENCES tipos_empleados(id) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT fk_empleados_id FOREIGN KEY (tipo_empleado_id) REFERENCES tipos_empleados(id)
 );
 
 DROP TABLE IF EXISTS usuarios;
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS usuarios(
     empleado_id INT NOT NULL,
     
     PRIMARY KEY(user),
-    CONSTRAINT fk_usuarios_id FOREIGN KEY (empleado_id) REFERENCES empleados(id_empleado) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT fk_usuarios_id FOREIGN KEY (empleado_id) REFERENCES empleados(id_empleado)
 );
 
 DROP TABLE IF EXISTS clientes;
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS clientes(
     persona_id INT NOT NULL,
     
     PRIMARY KEY(id_cliente),
-    CONSTRAINT fk_clientes_id FOREIGN KEY (persona_id) REFERENCES personas(dpi_cui) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT fk_clientes_id FOREIGN KEY (persona_id) REFERENCES personas(dpi_cui)
 );
 
 DROP TABLE IF EXISTS bebidas;
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS bebidas(
     proveedor_id INT NOT NULL,
     
     PRIMARY KEY(id_bebidas),
-    CONSTRAINT fk_bebidas FOREIGN KEY (proveedor_id) REFERENCES proveedores(id) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT fk_bebidas FOREIGN KEY (proveedor_id) REFERENCES proveedores(id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS menu;
@@ -100,8 +100,8 @@ CREATE TABLE IF NOT EXISTS menu(
     bebidas_id INT NOT NULL,
     
     PRIMARY KEY(id_menu),
-    CONSTRAINT fk_comidas_id FOREIGN KEY (comidas_id) REFERENCES comidas(id_comidas) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT fk_bebidas_id FOREIGN KEY (bebidas_id) REFERENCES bebidas(id_bebidas) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT fk_comidas_id FOREIGN KEY (comidas_id) REFERENCES comidas(id_comidas) ON DELETE CASCADE,
+    CONSTRAINT fk_bebidas_id FOREIGN KEY (bebidas_id) REFERENCES bebidas(id_bebidas) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS orden;
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS orden(
     menu_id INT NOT NULL,
     
     PRIMARY KEY(id_orden),
-    CONSTRAINT fk_menu_id FOREIGN KEY (menu_id) REFERENCES menu(id_menu) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT fk_menu_id FOREIGN KEY (menu_id) REFERENCES menu(id_menu)
 );
 
 DROP TABLE IF EXISTS factura;
@@ -123,11 +123,13 @@ CREATE TABLE IF NOT EXISTS factura(
     nombre VARCHAR(55),
     direccion VARCHAR(55),
     nit VARCHAR(55),
-    total DOUBLE NOT NULL,
+    total INT NOT NULL,
     cliente_id INT NOT NULL,
     orden_id INT NOT NULL,
     
     PRIMARY KEY(no_factura),
-    CONSTRAINT fk_cliente_id FOREIGN KEY (cliente_id) REFERENCES clientes(id_cliente) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT fk_orden_id FOREIGN KEY (orden_id) REFERENCES orden(id_orden) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT fk_cliente_id FOREIGN KEY (cliente_id) REFERENCES clientes(id_cliente),
+    CONSTRAINT fk_orden_id FOREIGN KEY (orden_id) REFERENCES orden(id_orden)
 );
+
+SELECT id_orden,hora_entrega,cliente_id,menu_id FROM orden

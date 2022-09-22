@@ -55,6 +55,37 @@
 
             </section>
 
+            <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary text-white text-alignt-center">
+                            <h5 class="modal-title" id="exampleModalLabel">Agregar Orden</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form method="POST" action="${pageContext.request.contextPath}/ServletOrdenes" class="was-validated">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="hora_entrega" class="col-form-label">hora de Entrega</label>
+                                    <input type="Time" class="form-control" id="hora_entrega" name="hora_entrega" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cliente_id" class="col-form-label">Cliente Id</label>
+                                    <input type="number" class="form-control" id="cliente_id" name="cliente_id" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="menu_id" class="col-form-label">Menu ID</label>
+                                    <input type="number" class="form-control" id="menu_id" name="menu_id" required>
+                                </div>
+                                <input type="hidden" class="form-control" id="accion" name="accion" value="insertar">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <section id="estudiante">
                 <div class="container  mb-5 pb-5">
                     <div class="row">
@@ -84,7 +115,8 @@
                                             <td>${orden.cliente_id}</td>   
                                             <td>${orden.menu_id}</td>
                                             <td>
-                                                <i class="fa-solid fa-user-pen"></i>
+                                                 <a class="btn btn-danger" href="${pageContext.request.contextPath}/ServletOrdenes?accion=editar&idOrden=${orden.id_orden}">
+                                                    <is class="fa-solid fa-user-pen"></i>  </a>
                                             </td>
                                             <td>
                                                 <a class="btn btn-secondary" href="${pageContext.request.contextPath}/ServletOrdenes?accion=eliminar&id_orden=${orden.id_orden}">

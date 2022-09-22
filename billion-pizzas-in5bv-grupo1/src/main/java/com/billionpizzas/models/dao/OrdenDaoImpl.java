@@ -20,6 +20,8 @@ public class OrdenDaoImpl implements IOrdenDao {
 
     private static final String SQL_SELECT = "SELECT id_orden,hora_entrega,cliente_id,menu_id FROM orden";
     private static final String SQL_DELETE = "DELETE FROM orden WHERE id_orden=?";
+    private static final String SQL_INSERT = "INSERT INTO orden(hora_entrega,cliente_id,menu_id) VALUES (?,?,?)";
+    private static final String SQL_UPDATE = "UPDATE orden SET hora_entrega = ?, cliente_id = ? ,menu_id = ? WHERE id_orden=?";
     private static final String SQL_SELECT_BY_ID = "SELECT id_orden,hora_entrega,cliente_id,menu_id FROM orden WHERE id_orden = ?";
     private Connection con = null;
     private PreparedStatement pstmt = null;
@@ -59,13 +61,36 @@ public class OrdenDaoImpl implements IOrdenDao {
     }
 
     @Override
-    public boolean add(Orden orden) {
-        return false;
+    public int add(Orden orden) {
+       int rows = 0;
+        try {
+            con = Conexion.getConnection();
+            pstmt = con.prepareStatement(SQL_INSERT);
+            pstmt.setTime(1, orden.getHora_entrega());
+            pstmt.setInt(2, orden.getCliente_id());
+            pstmt.setInt(3, orden.getMenu_id());
+          
+
+            System.out.println(pstmt.toString());
+            rows = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Se produjo un error al intentar insertar el registro: " + orden);
+            e.printStackTrace(System.out);
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        } finally {
+            Conexion.close(pstmt);
+            Conexion.close(con);
+        }
+        return rows;
+        
     }
 
     @Override
-    public boolean update(Orden orden) {
-        return false;
+    public int update(Orden orden) {
+        
+        return 0;
+        
     }
 
     @Override

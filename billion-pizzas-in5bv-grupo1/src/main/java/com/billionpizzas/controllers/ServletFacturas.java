@@ -32,7 +32,7 @@ public class ServletFacturas extends HttpServlet{
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
         
         String accion = request.getParameter("accion");
@@ -43,7 +43,7 @@ public class ServletFacturas extends HttpServlet{
                     listaFacturas(request, response);
                     break;
                 case "editar":
-                    //...
+                    editarFacturas(request, response);
                     break;
                 case "eliminar":
                     eliminarFactura(request, response);
@@ -52,10 +52,20 @@ public class ServletFacturas extends HttpServlet{
         }
     }
     
+    private void editarFacturas(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+        // Recuperar el ID de la factura
+        int idFactura = Integer.parseInt(request.getParameter("noFactura"));
+        // Buscar toda la informacion de la factura por medio de su ID
+        Factura factura = new FacturaDaoImpl().get(new Factura(idFactura));
+        HttpSession sesion = request.getSession();
+        sesion.setAttribute("factura", factura);
+        response.sendRedirect(request.getContextPath() + "/facturas/editar-factura.jsp");
+    }
+    
     private void eliminarFactura(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int idFactura = Integer.parseInt(request.getParameter("noFactura"));
-        Factura factura = new FacturaDaoJPA().get(new Factura(idFactura));
-        int registroFactura = new FacturaDaoJPA().delete(factura);
+        Factura factura = new FacturaDaoImpl().get(new Factura(idFactura));
+        int registroFactura = new FacturaDaoImpl().delete(factura);
         listaFacturas(request, response);
     }
 

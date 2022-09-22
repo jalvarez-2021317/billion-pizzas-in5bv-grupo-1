@@ -42,11 +42,64 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <a href="#" class="btn btn-primary">Agregar Factura</a>
+                            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">Agregar factura</a>
                         </div>
                     </div>
                 </div>
             </section>
+            
+            <!-- Modal-->
+            <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary text-white text-alignt-center">
+                            <h5 class="modal-title" id="exampleModalLabel">Agregar factura</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form method="POST" action="${pageContext.request.contextPath}/ServletFacturas" class="was-validated">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="serie" class="col-form-label">Serie</label>
+                                    <input type="text" class="form-control" id="serie" name="serie" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="fecha" class="col-form-label">Fecha</label>
+                                    <input type="date" class="form-control" id="fecha" name="fecha" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nombre" class="col-form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="direccion" class="col-form-label">Dirección</label>
+                                    <input type="text" class="form-control" id="direccion" name="direccion" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nit" class="col-form-label">NIT</label>
+                                    <input type="text" class="form-control" id="nit" name="nit" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="total" class="col-form-label">Total</label>
+                                    <input type="number" class="form-control" id="total" name="total" required step="any">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cliente" class="col-form-label">Cliente ID</label>
+                                    <input type="number" class="form-control" id="cliente" name="cliente" required step="any">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="orden" class="col-form-label">Orden ID</label>
+                                    <input type="number" class="form-control" id="orden" name="orden" required step="any">
+                                </div>
+                                <input type="hidden" class="form-control" id="accion" name="accion" value="insertar">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
             <section id="factura">
                 <div class="container mb-5 pb-5">
@@ -86,7 +139,8 @@
                                             <td>${factura.clienteId}</td>
                                             <td>${factura.ordenId}</td>
                                             <td>
-                                                <i class="fa-solid fa-user-pen"></i>
+                                                <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/ServletFacturas?accion=editar&noFactura=${factura.noFactura}">
+                                                    <i class="fa-solid fa-user-pen"></i>
                                             </td>
                                             <td>
                                                 <a class="btn btn-secondary" href="${pageContext.request.contextPath}/ServletFacturas?accion=eliminar&noFactura=${factura.noFactura}">

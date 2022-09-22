@@ -24,6 +24,7 @@ public class FacturaDaoImpl implements IFacturaDao {
     private static final String SQL_SELECT = "SELECT no_factura, serie, fecha, nombre, direccion, nit, total, cliente_id, orden_id FROM factura";
     private static final String SQL_INSERT = "INSERT INTO factura(no_factura, serie, fecha, nombre, direccion, nit, total, cliente_id, orden_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String SQL_SELECT_BY_ID = "SELECT no_factura, serie, fecha, nombre, direccion, nit, total, cliente_id, orden_id FROM factura WHERE id = ?";
+    private static final String SQL_UPDATE = "UPDATE factura SET serie=?, fecha=?, nombre=?, direccion=?, nit=?, total=?, cliente_id=?, orden_id=? WHERE no_factura=?";
     private static final String SQL_DELETE = "DELETE FROM factura WHERE id=?";
     
     private Connection con = null;
@@ -91,7 +92,33 @@ public class FacturaDaoImpl implements IFacturaDao {
     @Override
     public int update(Factura factura) {
         int rows = 0;
-        
+
+        try {
+            con = Conexion.getConnection();
+            pstmt = con.prepareStatement(SQL_UPDATE);
+            pstmt.setString(1, factura.getSerie());
+            pstmt.setDate(2, factura.getFecha());
+            pstmt.setString(3, factura.getNombre());
+            pstmt.setString(4, factura.getDireccion());
+            pstmt.setString(5, factura.getNit());
+            pstmt.setDouble(6, factura.getTotal());
+            pstmt.setInt(7, factura.getClienteId());
+            pstmt.setInt(8, factura.getOrdenId());
+            pstmt.setInt(9, factura.getNoFactura());
+
+            System.out.println(pstmt.toString());
+            rows = pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.err.println("Se produjo un error al intentar actualizar el siguiente registro: " + factura);
+            e.printStackTrace(System.out);
+        } catch (Exception ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(pstmt);
+            Conexion.close(con);
+
+        }
         return rows;
     }
 
@@ -119,8 +146,30 @@ public class FacturaDaoImpl implements IFacturaDao {
     }
 
     @Override
-    public Factura get(Factura estudiante) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Factura get(Factura factura) {
+        try {
+            con = Conexion.getConnection();
+            pstmt = con.prepareStatement(SQL_SELECT_BY_ID);
+            pstmt.setInt(1, factura.getNoFactura());
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                factura = new Factura(rs.getInt("no_factura"), rs.getString("serie"), rs.getDate("fecha"), 
+                        rs.getString("nombre"), rs.getString("direccion"), rs.getString("nit"), rs.getDouble("total"), 
+                        rs.getInt("cliente_id"), rs.getInt("orden_id"));
+            }
+            System.out.println("Estudiante: " + factura);
+        } catch (SQLException e) {
+            System.err.println("Se produjo un error al intentar listar las facturas");
+            e.printStackTrace(System.out);
+        } catch (Exception ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(rs);
+            Conexion.close(pstmt);
+            Conexion.close(con);
+        }
+        return factura;
     }
 
     

@@ -18,7 +18,9 @@ import java.util.List;
 public class Tipo_empleadoDaoImpl implements ITipo_empleadoDao{
 
     private static final String SQL_SELECT = "SELECT id,puesto FROM tipos_empleados";
+    private static final String SQL_SELECT_BY_ID = "SELECT id,puesto FROM tipos_empleados WHERE id = ?";
     private static final String SQL_DELETE = "DELETE FROM tipos_empleados WHERE id = ?";
+    private static final String SQL_INSERT = "INSERT INTO Tipo_empleados(puesto) VALUES (?)";
     private Connection con = null;
     private PreparedStatement pstmt = null; 
     private ResultSet rs = null;
@@ -53,7 +55,27 @@ public class Tipo_empleadoDaoImpl implements ITipo_empleadoDao{
 
     @Override
     public int add(Tipo_empleado tipo_empleado) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        int rows = 0; 
+        try{
+            con = Conexion.getConnection();
+            pstmt = con.prepareStatement(SQL_INSERT);
+            pstmt.setString(1, tipo_empleado.getPuesto());
+            
+            System.out.println(pstmt.toString());
+            
+            rows = pstmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.err.println("Se produjo un error al tratar de eliminar el registro con el id "+ tipo_empleado);
+            e.printStackTrace(System.out);
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        } finally {
+            Conexion.close(rs);
+            Conexion.close(pstmt);
+            Conexion.close(con);
+        } 
+        return rows; 
     }
 
     @Override
@@ -85,7 +107,28 @@ public class Tipo_empleadoDaoImpl implements ITipo_empleadoDao{
 
     @Override
     public Tipo_empleado get(Tipo_empleado tipo_empleado) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try{
+            con = Conexion.getConnection();
+            pstmt = con.prepareStatement(SQL_SELECT_BY_ID);
+            pstmt.setInt(1, this.tipo_empleado.getId());
+            System.out.println(pstmt.toString());
+            rs = pstmt.executeQuery();
+            
+            while(rs.next()){
+                tipo_empleado = new Tipo_empleado(rs.getInt("id"), rs.getString("puesto"));
+                
+            }
+        } catch (SQLException e) {
+            System.err.println("Se produjo un error al intentar listar los tipos de empleados");
+            e.printStackTrace(System.out);
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        } finally {
+            Conexion.close(rs);
+            Conexion.close(pstmt);
+            Conexion.close(con);
+        } 
+        return tipo_empleado;
     }
   
 }

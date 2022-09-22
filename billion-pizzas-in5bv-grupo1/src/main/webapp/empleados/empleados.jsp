@@ -38,19 +38,43 @@
         </aside>
         <main>
             <!-- Contenido principal-->
-            <section id="accions"  class="py-4 mb-4">
-                <div class="container" >
+            <section id="accions" class="py-4 mb-4">
+                <div class="container">
                     <div class="row">
-                        <div class="col-12" >
-                            <a class="btn btn-primary" href="#">
-                                Agregar Empleado 
-                            </a>
+                        <div class="col-12">
+                            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">Agregar Empleado</a>
                         </div>
-
                     </div>
                 </div>
-
             </section>
+            <!-- Modal _V-->
+            <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary text-white text-alignt-center">
+                            <h5 class="modal-title" id="exampleModalLabel">Agregar Empleado</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form method="POST" action="${pageContext.request.contextPath}/ServletEmpleados" class="was-validated">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="persona_id" class="col-form-label">Persona Id</label>
+                                    <input type="number" class="form-control" id="persona_id" name="persona_id" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tipo_empleado_id" class="col-form-label">Tipo Empleado</label>
+                                    <input type="number" class="form-control" id="tipo_empleado_id" name="tipo_empleado_id" required>
+                                </div>
+                                <input type="hidden" class="form-control" id="accion" name="accion" value="insertar">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
             <section id="estudiante">
                 <div class="container  mb-5 pb-5">
@@ -79,8 +103,11 @@
                                                    <td>${empleado.id_empleado}</td>
                                                    <td>${empleado.persona_id}</td>
                                                    <td>${empleado.tipo_empleado_id}</td>                        <td>
-                                               <i class="fa-solid fa-user-pen"></i>
-                                        </td>
+                                               
+                                                       
+                                                <a class="btn btn-danger" href="${pageContext.request.contextPath}/ServletEmpleados?accion=editar&idEmpleado=${empleado.id_empleado}">
+                                                    <is class="fa-solid fa-user-pen"></i>  </a>
+                                            
                                     <td>
                                         <a class="btn btn-secondary" href="${pageContext.request.contextPath}/ServletEmpleados?accion=eliminar&id_empelado=${empleado.id_empleado}">
                                                     <i class="fa-solid fa-user-xmark"></i>

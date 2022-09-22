@@ -15,10 +15,10 @@ public interface IOrdenDao {
     
     
     // Agregar un nuevo Registro
-    public boolean add(Orden orden);
+    public int add(Orden orden);
     
     // Modificar un registro
-    public boolean update(Orden orden);
+    public int update(Orden orden);
     
     // Eliminar un registro
     

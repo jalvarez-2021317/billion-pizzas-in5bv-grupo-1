@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 
 import java.sql.Time;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 /**
  *
@@ -37,11 +38,11 @@ public class Menu implements Serializable{
     private int id_menu;
     
     @Column
-    private Time horario_comida;
+    private Timestamp horario_comida;
     @Column
-    private Time horario_apertura;
+    private Timestamp horario_apertura;
     @Column
-    private Time horario_cierre;
+    private Timestamp horario_cierre;
     @Column
     private int comidas_id;
     @Column
@@ -57,7 +58,7 @@ public class Menu implements Serializable{
     }
 
     //Agregar
-    public Menu(Time horario_comida, Time horario_apertura, Time horario_cierre, int comidas_id, int bebidas_id) {
+    public Menu(Timestamp horario_comida, Timestamp horario_apertura, Timestamp horario_cierre, int comidas_id, int bebidas_id) {
         this.horario_comida = horario_comida;
         this.horario_apertura = horario_apertura;
         this.horario_cierre = horario_cierre;
@@ -66,7 +67,7 @@ public class Menu implements Serializable{
     }
     
     //Modificar
-    public Menu(int id_menu, Time horario_comida, Time horario_apertura, Time horario_cierre, int comidas_id, int bebidas_id) {
+    public Menu(int id_menu, Timestamp horario_comida, Timestamp horario_apertura, Timestamp horario_cierre, int comidas_id, int bebidas_id) {
         this.id_menu = id_menu;
         this.horario_comida = horario_comida;
         this.horario_apertura = horario_apertura;
@@ -86,27 +87,27 @@ public class Menu implements Serializable{
         this.id_menu = id_menu;
     }
 
-    public Time getHorario_comida() {
+    public Timestamp getHorario_comida() {
         return horario_comida;
     }
 
-    public void setHorario_comida(Time horario_comida) {
+    public void setHorario_comida(Timestamp horario_comida) {
         this.horario_comida = horario_comida;
     }
 
-    public Time getHorario_apertura() {
+    public Timestamp getHorario_apertura() {
         return horario_apertura;
     }
 
-    public void setHorario_apertura(Time horario_apertura) {
+    public void setHorario_apertura(Timestamp horario_apertura) {
         this.horario_apertura = horario_apertura;
     }
 
-    public Time getHorario_cierre() {
+    public Timestamp getHorario_cierre() {
         return horario_cierre;
     }
 
-    public void setHorario_cierre(Time horario_cierre) {
+    public void setHorario_cierre(Timestamp horario_cierre) {
         this.horario_cierre = horario_cierre;
     }
 

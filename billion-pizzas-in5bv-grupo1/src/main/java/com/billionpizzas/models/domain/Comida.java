@@ -19,8 +19,8 @@ import java.io.Serializable;
 @Entity
 @Table(name = "comidas")
 @NamedQueries ({
-    @NamedQuery(name = "Comida.findAll", query="from Comida"),
-    @NamedQuery(name = "Comida.find", query="from Comida WHERE id_comidas = :id_comidas")
+    @NamedQuery(name = "Comida.findAll", query = "from Comida"),
+    @NamedQuery(name = "Comida.find", query = "from Comida WHERE id_comidas = : id_comidas")
 })
 public class Comida implements Serializable{
 
@@ -43,6 +43,11 @@ public class Comida implements Serializable{
     
     public Comida(int id_comidas){
         this.id_comidas = id_comidas;
+    }
+
+    public Comida(String nombre_comida, int precio) {
+        this.nombre_comida = nombre_comida;
+        this.precio = precio;
     }
 
     public Comida(int id_comidas, String nombre_comida, int precio) {

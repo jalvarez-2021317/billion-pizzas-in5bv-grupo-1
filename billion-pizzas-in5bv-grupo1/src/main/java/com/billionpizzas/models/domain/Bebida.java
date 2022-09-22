@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 
 import java.sql.Date;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  *

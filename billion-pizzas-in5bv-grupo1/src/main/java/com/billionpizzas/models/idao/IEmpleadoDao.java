@@ -15,10 +15,10 @@ public interface IEmpleadoDao {
     
     
     // Agregar un nuevo Registro
-    public boolean add(Empleado empleado);
+    public int add(Empleado empleado);
     
     // Modificar un registro
-    public boolean update(Empleado empleado);
+    public int update(Empleado empleado);
     
     // Eliminar un registro
     

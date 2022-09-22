@@ -42,7 +42,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <a href="#" class="btn btn-primary">Agregar persona</a>
+                            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">Agregar persona</a>
                         </div>
                     </div>
                 </div>
@@ -56,27 +56,43 @@
                             <h5 class="modal-title" id="exampleModalLabel">Agregar personas</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form method="POST" action="${pageContext.request.contextPath}/ServletEstudiante" class="was-validated">
+                        <form method="POST" action="${pageContext.request.contextPath}/ServletPersonas" class="was-validated">
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="nombre" class="col-form-label">Nombres</label>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                    <label for="dpi_cui" class="col-form-label">No. DPI</label>
+                                    <input type="number" class="form-control" id="id" name="dpi_cui" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="apellido" class="col-form-label">Apellidos</label>
-                                    <input type="text" class="form-control" id="apellido" name="apellido" required>
+                                    <label for="nombre1" class="col-form-label">Primer nombre</label>
+                                    <input type="text" class="form-control" id="nombre1" name="nombre1" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="email" class="col-form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <label for="nombre2" class="col-form-label">Segundo nombre</label>
+                                    <input type="text" class="form-control" id="nombre2" name="nombre2" required>
                                 </div>
                                 <div class="mb-3">
+                                    <label for="nombre3" class="col-form-label">Tercer nombre</label>
+                                    <input type="text" class="form-control" id="nombre3" name="nombre3" required step="any">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="apellido1" class="col-form-label">Primer apellido</label>
+                                    <input type="text" class="form-control" id="apellido1" name="apellido1" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="apellido2" class="col-form-label">Segundo apellido</label>
+                                    <input type="text" class="form-control" id="apellido2" name="apellido2" required>
+                                </div>
+                                 <div class="mb-3">
                                     <label for="telefono" class="col-form-label">Teléfono</label>
                                     <input type="tel" class="form-control" id="telefono" name="telefono" required>
+                                 </div>
+                                 <div class="mb-3">
+                                    <label for="correo" class="col-form-label">Correo</label>
+                                    <input type="email" class="form-control" id="correo" name="correo" required>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="saldo" class="col-form-label">Saldo</label>
-                                    <input type="number" class="form-control" id="saldo" name="saldo" required step="any">
+                                 <div class="mb-3">
+                                    <label for="direccion" class="col-form-label">Dirección</label>
+                                    <input type="text" class="form-control" id="direccion" name="direccion" required>
                                 </div>
                                 <input type="hidden" class="form-control" id="accion" name="accion" value="insertar">
                             </div>
@@ -120,7 +136,9 @@
                                             <td>${persona.correo}</td>
                                             <td>${persona.direccion}</td>
                                             <td>
-                                                <i class="fa-solid fa-user-pen"></i>
+                                                <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/ServletPersonas?accion=editar&dpi=${persona.dpi}">
+                                                    <i class="fa-solid fa-user-pen"></i>
+                                                </a>
                                             </td>
                                             <td>
                                                 <a class="btn btn-secondary" href="${pageContext.request.contextPath}/ServletPersonas?accion=eliminar&dpi=${persona.dpi}">

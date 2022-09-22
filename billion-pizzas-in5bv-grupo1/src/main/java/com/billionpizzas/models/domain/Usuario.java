@@ -22,29 +22,25 @@ import java.io.Serializable;
  * Código tecnico: IN5BV
  * Grupo: 1
  */
-
 @Entity
 @Table(name = "usuarios")
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query ="from Usuario"),
-    @NamedQuery(name = "Usuario.find", query = "from Usuario WHERE id = :id")
+    @NamedQuery(name = "Usuario.find", query = "from Usuario WHERE id = :user")
   
 })
 
 public class Usuario implements Serializable{
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L; 
 
     @Id
-    @Column(name = "id_usuarios")
+    @Column(name = "user")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_usuarios;
-    
-    @Column
     private String user;
     @Column
     private String password;
-    @Column
+    @Column(name = "empleado_id");
     private int empleadoId;
     
     public Usuario(){

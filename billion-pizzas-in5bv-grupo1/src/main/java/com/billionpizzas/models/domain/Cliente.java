@@ -26,7 +26,7 @@ import java.io.Serializable;
     @Table(name = "clientes")
     @NamedQueries({
     @NamedQuery(name = "Cliente.findAll", query ="from Cliente"),
-    @NamedQuery(name = "Cliente.find", query = "from Cliente WHERE id = :id")
+    @NamedQuery(name = "Cliente.find", query = "from Cliente WHERE id = :idCliente")
     
 })
 
@@ -44,7 +44,7 @@ public class Cliente implements Serializable {
      private int idCliente;
      @Column
      private String nit;
-     @Column
+     @Column(name = "persona_id")
      private int personaId;
       
       

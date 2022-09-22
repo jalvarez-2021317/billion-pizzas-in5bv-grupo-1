@@ -41,23 +41,69 @@
         <aside>
             <!-- Información secundaria-->
         </aside>
-        
+
         <main>
             <!-- Contenido principal -->
             <section id="accions" class="p-2">
                 <div class="container">                    
                     <div class="row">
                         <div class="col-12">
-                            <a class="btn btn-warning" href="#">Agregar Menu</a>
+                            <a href="#" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addModal">Agregar Bebias</a>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <!<!-- Modal -->
+            <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-warning text-white">
+                            <h5 class="modal-title" id="exampleModalLabel">Agregar Menú</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form method="POST" action="${pageContext.request.contextPath}/ServletMenu" class="was-validated">
+                            <div class="modal-body">
+
+                                <div class="mb-3">
+                                    <label for="horarioComida" class="col-form-label">Horario Comida</label>
+                                    <input type="datetime" class="form-control" id="horarioComida" name="horarioComida" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="horarioApertura" class="col-form-label">Horario Apertura</label>
+                                    <input type="datetime" class="form-control" id="horarioApertura" name="horarioApertura" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="horarioCierre" class="col-form-label">Horario Cierre</label>
+                                    <input type="datetime" class="form-control" id="horarioCierre" name="horarioCierre" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="comidasId" class="col-form-label">Comidas Id</label>
+                                    <input type="number" class="form-control" id="comidasId" name="comidasId" required step="any">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="bebidasId" class="col-form-label">Bebidas Id</label>
+                                    <input type="number" class="form-control" id="bebidasId" name="bebidasId" required step="any">
+                                </div>
+
+                                <input type="hidden" class="form-control" id="accion" name="accion" value="insertar">
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <!-- Al conectar botones a una acciones deben de ser tipo "submit" -->
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
             <section id="estudiante">
                 <div class="container mb-5 pb-5">
                     <div class="row">
-                        
+
                         <div class=" col-12 col-md-9">
 
                             <section id="accions" class="p-3">
@@ -92,11 +138,13 @@
                                             <td>${menu.comidas_id}</td>
                                             <td>${menu.bebidas_id}</td>                                            
                                             <td>
-                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                Editar
+                                                <a class="btn btn-secondary" href="${pageContext.request.contextPath}/ServletMenu?accion=editar&idMenu=${menu.id_menu}">    
+                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                    Editar
+                                                </a>
                                             </td>
                                             <td>
-                                                <a class="btn btn-secondary" href="${pageContext.request.contextPath}/ServletMenu?accion=eliminar&idMenu=${menu.id_menu}">    
+                                                <a class="btn btn-danger" href="${pageContext.request.contextPath}/ServletMenu?accion=eliminar&idMenu=${menu.id_menu}">    
                                                     <!-- //accion y despues lo que realizara Eliminar, para un segunda parametro es con "&" -->
                                                     <i class="fa-solid fa-trash-arrow-up"></i> Eliminar
                                                 </a>                                                
@@ -107,7 +155,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        
+
                         <div class="col-12 col-md-3">
                             <div class="card text-center bg-success text-white mb-3">
                                 <div class="card-body">
@@ -118,7 +166,7 @@
                                 </div>                                
                             </div>                                                    
                         </div>
-                                                
+
                     </div>
                 </div>
             </section>
@@ -129,9 +177,7 @@
         <script type="text/javascript" src="../assets/js/jquery-3.6.0.js"></script>
         <script type="text/javascript" src="../assets/js/jquery-migrate-3.4.0.js"></script>
         <script type="text/javascript" src="../assets/js/jquery-migrate-1.4.1.js"></script>
-        <script type="text/javascript" src="../assets/js/jquery.flexslider.js"></script>
-        <script type="text/javascript" src="../assets/js/script.js"></script>
-        <script type="text/javascript" src="https://unpkg.com/@popperjs/core@2"></script>
+        <script type="text/javascript" src="../assets/js/jquery.flexslider.js"></script>        
         <script type="text/javascript" src="../assets/js/bootstrap.bundle.js"></script>
     </body>
 </html>

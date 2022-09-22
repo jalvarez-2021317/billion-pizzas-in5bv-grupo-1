@@ -19,6 +19,8 @@ import java.util.List;
 public class EmpleadoDaoImpl implements IEmpleadoDao {
 
     private static final String SQL_SELECT = "SELECT id_empleado,persona_id,tipo_empleado_id FROM empleados";
+    private static final String SQL_INSERT = "INSERT INTO empleados(persona_id,tipo_empleado_id) VALUES (?, ?)";
+    private static final String SQL_UPDATE = "UPDATE empleados SET persona_id = ?, tipo_empleado_id = ? WHERE id_empleado=? ";
     private static final String SQL_DELETE = "DELETE FROM empleados WHERE id_empleado=?";
     private static final String SQL_SELECT_BY_ID = "SELECT id_empleado,persona_id,tipo_empleado_id FROM empleados WHERE id_empleado = ?";
     private Connection con = null;
@@ -58,14 +60,55 @@ public class EmpleadoDaoImpl implements IEmpleadoDao {
     }
 
     @Override
-    public boolean add(Empleado empleado) {
-        return false;
+    public int add(Empleado empleado) {
+     int rows = 0;
+        try {
+            con = Conexion.getConnection();
+            pstmt = con.prepareStatement(SQL_INSERT);
+            pstmt.setInt(1, empleado.getPersona_id());
+            pstmt.setInt(2, empleado.getTipo_empleado_id());
+          
+
+            System.out.println(pstmt.toString());
+            rows = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Se produjo un error al intentar insertar el registro: " + empleado);
+            e.printStackTrace(System.out);
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        } finally {
+            Conexion.close(pstmt);
+            Conexion.close(con);
+        }
+        return rows;
     }
 
     @Override
-    public boolean update(Empleado empleado) {
-        return false;
+    public int update(Empleado empleado) {
+        int rows = 0;
+        try {
+            con = Conexion.getConnection();
+            pstmt = con.prepareStatement(SQL_UPDATE);
+            pstmt.setInt(1, empleado.getPersona_id());
+            pstmt.setInt(2, empleado.getTipo_empleado_id());
+            pstmt.setInt(3, empleado.getId_empleado());
+            
+
+            System.out.println(pstmt.toString());
+
+            rows = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Se produjo un error al intentar actuaalizar el siguiente registro " + empleado);
+            e.printStackTrace(System.out);
+        } catch (Exception ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            Conexion.close(pstmt);
+            Conexion.close(con);
+        }
+        return rows;
     }
+        
 
     @Override
     public int delete(Empleado empleado) {
